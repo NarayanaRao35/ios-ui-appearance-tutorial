@@ -16,6 +16,8 @@ class SettingsTableViewController: UITableViewController {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: #selector(SettingsTableViewController.dismiss))
+
+    themeSelector.selectedSegmentIndex = ThemeManager.currentTheme().rawValue
   }
   
   func dismiss() {
@@ -23,6 +25,9 @@ class SettingsTableViewController: UITableViewController {
   }
   
   @IBAction func applyTheme(sender: UIButton) {
+    if let selectedTheme = Theme(rawValue: themeSelector.selectedSegmentIndex) {
+      ThemeManager.applyTheme(selectedTheme)
+    }
     dismiss()
   }
 }
