@@ -21,7 +21,7 @@ class SearchTableViewController: UITableViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: "dismiss")
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: #selector(SearchTableViewController.dismiss))
     
     updateNumberOfPaws(pawStepper)
     updateDistance(distanceSlider)

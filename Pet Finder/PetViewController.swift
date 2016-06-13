@@ -15,7 +15,7 @@ class PetViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Adopt", style: .Plain, target: self, action: "adopt")
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Adopt", style: .Plain, target: self, action: #selector(PetViewController.adopt))
     title = pets[petIndex].name
     
     petImageView.image = UIImage(named: "pet\(petIndex)")
