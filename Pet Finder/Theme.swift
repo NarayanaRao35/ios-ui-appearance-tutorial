@@ -59,5 +59,8 @@ struct ThemeManager {
 
     UINavigationBar.appearance().barStyle = theme.barStyle
     UINavigationBar.appearance().setBackgroundImage(theme.navigationBackgroundImage, forBarMetrics: .Default)
+
+    UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
+    UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "backArrowMaskFixed")
   }
 }
