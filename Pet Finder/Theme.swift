@@ -23,6 +23,19 @@ enum Theme: Int {
       return UIColor(red: 10.0/255.0, green: 10.0/255.0, blue: 10.0/255.0, alpha: 1.0)
     }
   }
+
+  var barStyle: UIBarStyle {
+    switch self {
+    case .Default, .Graphical:
+      return .Default
+    case .Dark:
+      return .Black
+    }
+  }
+
+  var navigationBackgroundImage: UIImage? {
+    return self == .Graphical ? UIImage(named: "navBackground") : nil
+  }
 }
 
 struct ThemeManager {
@@ -43,5 +56,8 @@ struct ThemeManager {
     // 2
     let sharedApplication = UIApplication.sharedApplication()
     sharedApplication.delegate?.window??.tintColor = theme.mainColor
+
+    UINavigationBar.appearance().barStyle = theme.barStyle
+    UINavigationBar.appearance().setBackgroundImage(theme.navigationBackgroundImage, forBarMetrics: .Default)
   }
 }
