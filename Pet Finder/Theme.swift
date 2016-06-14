@@ -87,12 +87,45 @@ struct ThemeManager {
     UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
     UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "backArrowMaskFixed")
 
+    //
     UITabBar.appearance().barStyle = theme.barStyle
     UITabBar.appearance().backgroundImage = theme.tabBarBackgroundImage
-    
+
     let tabIndicator = UIImage(named: "tabBarSelectionIndicator")?.imageWithRenderingMode(.AlwaysTemplate)
     let tabResizableIndicator = tabIndicator?.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 2.0, bottom: 0, right: 2.0))
     UITabBar.appearance().selectionIndicatorImage = tabResizableIndicator
+
+    //
+    let controlBackground = UIImage(named: "controlBackground")?.imageWithRenderingMode(.AlwaysTemplate)
+      .resizableImageWithCapInsets(UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+    let controlSelectedBackground = UIImage(named: "controlSelectedBackground")?
+        .imageWithRenderingMode(.AlwaysTemplate)
+        .resizableImageWithCapInsets(UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+
+    UISegmentedControl.appearance().setBackgroundImage(controlBackground, forState: .Normal,
+                                                       barMetrics: .Default)
+    UISegmentedControl.appearance().setBackgroundImage(controlSelectedBackground, forState: .Selected,
+                                                       barMetrics: .Default)
+
+    //
+    UIStepper.appearance().setBackgroundImage(controlBackground, forState: .Normal)
+    UIStepper.appearance().setBackgroundImage(controlBackground, forState: .Disabled)
+    UIStepper.appearance().setBackgroundImage(controlBackground, forState: .Highlighted)
+    UIStepper.appearance().setDecrementImage(UIImage(named: "fewerPaws"), forState: .Normal)
+    UIStepper.appearance().setIncrementImage(UIImage(named: "morePaws"), forState: .Normal)
+
+    //
+    UISlider.appearance().setThumbImage(UIImage(named: "sliderThumb"), forState: .Normal)
+    UISlider.appearance().setMaximumTrackImage(UIImage(named: "maximumTrack")?
+      .resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 0.0, bottom: 0, right: 6.0)),
+                                               forState: .Normal)
+    UISlider.appearance().setMinimumTrackImage(UIImage(named: "minimumTrack")?
+      .imageWithRenderingMode(.AlwaysTemplate)
+      .resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 6.0, bottom: 0, right: 0)),
+                                               forState: .Normal)
+    UISwitch.appearance().onTintColor = theme.mainColor.colorWithAlphaComponent(0.3)
+    UISwitch.appearance().thumbTintColor = theme.mainColor
+
 
   }
 }
